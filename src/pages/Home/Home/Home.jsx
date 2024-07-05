@@ -1,9 +1,11 @@
+import Header from "../../Shares/Header/Header";
 
 
 const Home = () => {
   return (
     <div>
-      <div>Home</div>
+      <Header/>
+      <p>Home</p>
     </div>
   );
 };
