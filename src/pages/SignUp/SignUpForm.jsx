@@ -1,15 +1,33 @@
 import { useForm } from "react-hook-form";
 import Field from "../../components/Field";
+import { useRef } from "react";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
+  const { createUser } = useAuth();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
+  const password = useRef();
+  password.current = watch("password", "");
 
   const submitForm = (formData) => {
-    console.log(formData);
+    const { email, password } = formData;
+    
+    createUser(email, password)
+      .then((result) => {
+        navigate("/");
+        console.log(result.user);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   return (
@@ -19,7 +37,7 @@ const SignUpForm = () => {
     >
       <Field className="auth-label" label="Name" error={errors.name}>
         <input
-          {...register("name", { required: "Name is Required" })}
+          {...register("name", { required: "Name is required" })}
           className={`auth-input ${
             errors.error ? "border-red-500" : "border-gray-200"
           }`}
@@ -29,9 +47,15 @@ const SignUpForm = () => {
         />
       </Field>
       <Field className="auth-label" label="Email" error={errors.email}>
-        <input 
-        {...register('email', {required: 'Email is Required'})}
-        className={`auth-input ${errors.error ? "border-red-500" : "border-gray-200"}`} type="email" name="email" id="email" />
+        <input
+          {...register("email", { required: "Email is required" })}
+          className={`auth-input ${
+            errors.error ? "border-red-500" : "border-gray-200"
+          }`}
+          type="email"
+          name="email"
+          id="email"
+        />
       </Field>
       <Field className="auth-label" label="Password" error={errors.password}>
         <input
@@ -42,18 +66,31 @@ const SignUpForm = () => {
               message: "Your password must be at least 8 characters",
             },
           })}
-          className={`auth-input ${errors.error ? "border-red-500" : "border-gray-200"}`} 
+          className={`auth-input ${
+            errors.error ? "border-red-500" : "border-gray-200"
+          }`}
           type="password"
           name="password"
           id="password"
         />
       </Field>
-      <Field className="auth-label" label="Retype Password" error={errors.password}>
+      <Field
+        className="auth-label"
+        label="Password Repeat"
+        error={errors.password_repeat}
+      >
         <input
-          className={`auth-input ${errors.error ? "border-red-500" : "border-gray-200"}`} 
+          {...register("password_repeat", {
+            required: "Retype Password is required",
+            validate: (value) =>
+              value === password.current || "Password do not match",
+          })}
+          className={`auth-input ${
+            errors.error ? "border-red-500" : "border-gray-200"
+          }`}
           type="password"
-          name="Retype_Password"
-          id="Retype_Password"
+          name="password_repeat"
+          id="password_repeat"
         />
       </Field>
       <button
