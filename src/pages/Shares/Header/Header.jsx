@@ -7,14 +7,14 @@ import Avatar from "../../../assets/images/avatars/avatar_1.png";
 import useAuth from "../../../hooks/useAuth";
 
 const Header = () => {
-  const {logOut} = useAuth();
+  const { logOut } = useAuth();
   const navigate = useNavigate();
 
   // logOut
   const handleLogOut = () => {
     logOut()
-    .then(()=>{})
-    .catch(()=>{})
+      .then(() => {})
+      .catch(() => {});
     navigate("/login");
   };
   return (
@@ -28,7 +28,7 @@ const Header = () => {
           />
         </Link>
         <div className="flex items-center space-x-4">
-          <Link to="#" className="btn-primary">
+          <Link to="/" className="btn-primary">
             <img src={HomeIcon} alt="Home" />
             Home
           </Link>
@@ -38,14 +38,14 @@ const Header = () => {
           <button onClick={handleLogOut} className="icon-btn">
             <img src={LogoutIcon} alt="Logout" />
           </button>
-          <button className="flex-center !ml-8 gap-3">
+          <Link to="/profile" className="flex-center !ml-8 gap-3">
             <span className="text-lg font-medium lg:text-xl">Imam</span>
             <img
               className="max-h-[32px] max-w-[32px] lg:max-h-[44px] lg:max-w-[44px]"
               src={Avatar}
               alt="Avatar"
             />
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

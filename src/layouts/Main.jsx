@@ -1,8 +1,14 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import Header from "../pages/Shares/Header/Header";
 
 const Main = () => {
+  const { user } = useAuth();
   return (
-    <Outlet/>
+    <>
+      {user && <Header />}
+      <Outlet />
+    </>
   );
 };
 

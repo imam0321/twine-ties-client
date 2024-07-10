@@ -17,12 +17,13 @@ const LoginForm = () => {
     
     signIn(email, password)
     .then(result=> {
+      navigate('/');
       console.log(result.user);
     })
     .catch(err => {
       console.log(err.message);
     })
-    navigate('/');
+    
   };
 
   return (
