@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.7.2",
     "firebase": "^10.12.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -29,5 +30,10 @@
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4",
     "vite": "^5.3.1"
-  }
+  },
+  "description": "This is a social media app with features like, showing the post, post details, reactions, comments and profile.",
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

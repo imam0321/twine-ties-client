@@ -7,7 +7,11 @@ const Main = () => {
   return (
     <>
       {user && <Header />}
-      <Outlet />
+      <main className="mx-auto max-w-[1080px] py-8">
+        <div className="container">
+          <Outlet />
+        </div>
+      </main>
     </>
   );
 };

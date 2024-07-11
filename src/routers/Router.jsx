@@ -11,9 +11,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <PrivateRoute>
         <Main />
-      </PrivateRoute>
     ),
     children: [
       {
@@ -22,20 +20,22 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: <PrivateRoute><Profile /></PrivateRoute>,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp />,
+      },
+      {
+        path: "/*",
+        element: <NotFound />,
+      },
+      
     ],
   },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signUp",
-    element: <SignUp />,
-  },
-  {
-    path: "/*",
-    element: <NotFound />,
-  },
+  
 ]);

@@ -23,7 +23,7 @@ const SignUpForm = () => {
     createUser(email, password)
       .then((result) => {
         navigate("/");
-        console.log(result.user);
+        console.log(result.user.data);
       })
       .catch((err) => {
         console.log(err.message);
