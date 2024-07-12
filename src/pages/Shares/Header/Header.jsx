@@ -4,7 +4,7 @@ import HomeIcon from "../../../assets/icons/home.svg";
 import NotificationIcon from "../../../assets/icons/notification.svg";
 import LogoutIcon from "../../../assets/icons/logout.svg";
 import Avatar from "../../../assets/images/avatars/avatar_1.png";
-import { useAuth } from "../../../hooks";
+import useAuth from "../../../hooks/useAuth";
 
 const Header = () => {
   const navigate = useNavigate();
