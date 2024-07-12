@@ -5,10 +5,14 @@ import NotificationIcon from "../../../assets/icons/notification.svg";
 import LogoutIcon from "../../../assets/icons/logout.svg";
 import Avatar from "../../../assets/images/avatars/avatar_1.png";
 import useAuth from "../../../hooks/useAuth";
+import useProfile from "../../../hooks/useProfile";
 
 const Header = () => {
   const navigate = useNavigate();
-  const {setAuth} = useAuth();
+  const {auth, setAuth} = useAuth();
+  const {state} = useProfile();
+
+  const user = state?.user ?? auth?.user;
 
   // logOut
   const handleLogOut = () => {
@@ -37,10 +41,10 @@ const Header = () => {
             <img src={LogoutIcon} alt="Logout" />
           </button>
           <Link to="/profile" className="flex-center !ml-8 gap-3">
-            <span className="text-lg font-medium lg:text-xl">Imam</span>
+            <span className="text-lg font-medium lg:text-xl">{user?.firstName} {user?.lastName}</span>
             <img
               className="max-h-[32px] max-w-[32px] lg:max-h-[44px] lg:max-w-[44px]"
-              src={Avatar}
+              src={`${import.meta.env.VITE_SERVER_BASE_URL}/${user?.avatar}`}
               alt="Avatar"
             />
           </Link>
