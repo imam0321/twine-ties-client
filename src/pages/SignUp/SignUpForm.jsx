@@ -1,11 +1,9 @@
 import { useForm } from "react-hook-form";
 import Field from "../../components/Field";
 import { useRef } from "react";
-import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
-  const { createUser } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -17,17 +15,16 @@ const SignUpForm = () => {
   const password = useRef();
   password.current = watch("password", "");
 
-  const submitForm = (formData) => {
-    const { email, password } = formData;
-    
-    createUser(email, password)
-      .then((result) => {
-        navigate("/");
-        console.log(result.user.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+  const submitForm = () => {
+    navigate("/");
+    // createUser(email, password)
+    //   .then((result) => {
+        
+    //     console.log(result.user.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
   };
 
   return (

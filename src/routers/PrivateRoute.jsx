@@ -1,18 +1,11 @@
 import { Navigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import { useAuth } from "../hooks";
+import Main from "../layouts/Main";
 
-const PrivateRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+const PrivateRoutes = () => {
+  const { auth } = useAuth();
 
-  if (loading) {
-    return <p>loading....</p>;
-  } 
-  else if (user) {
-    return children;
-  } 
-  else {
-    return <Navigate to="/login" />;
-  }
+  return <>{auth?.user ? <Main /> : <Navigate to="/login" />}</>;
 };
 
-export default PrivateRoute;
+export default PrivateRoutes;

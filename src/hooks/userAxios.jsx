@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { api } from "../api";
-import {useAuth} from "../hooks/useAuth"
+import useAuth from "./useAuth";
 
 
 const userAxios = () => {

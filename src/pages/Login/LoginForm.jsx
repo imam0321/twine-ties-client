@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import Field from "../../components/Field";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import { useAuth } from "../../hooks";
 
 const LoginForm = () => {
-  const {signIn} = useAuth()
   const navigate = useNavigate();
+  const {setAuth} = useAuth();
   const {
     register,
     handleSubmit,
@@ -13,17 +13,11 @@ const LoginForm = () => {
   } = useForm();
 
   const submitForm = (formData) => {
-    const {email, password} = formData;
+    const user = {...formData};
+    console.log(user);
+    setAuth({user})
     
-    signIn(email, password)
-    .then(result=> {
-      navigate('/');
-      console.log(result.user);
-    })
-    .catch(err => {
-      console.log(err.message);
-    })
-    
+    navigate('/');
   };
 
   return (

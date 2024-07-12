@@ -4,17 +4,15 @@ import HomeIcon from "../../../assets/icons/home.svg";
 import NotificationIcon from "../../../assets/icons/notification.svg";
 import LogoutIcon from "../../../assets/icons/logout.svg";
 import Avatar from "../../../assets/images/avatars/avatar_1.png";
-import useAuth from "../../../hooks/useAuth";
+import { useAuth } from "../../../hooks";
 
 const Header = () => {
-  const { logOut } = useAuth();
   const navigate = useNavigate();
+  const {setAuth} = useAuth();
 
   // logOut
   const handleLogOut = () => {
-    logOut()
-      .then(() => {})
-      .catch(() => {});
+    setAuth({});
     navigate("/login");
   };
   return (
