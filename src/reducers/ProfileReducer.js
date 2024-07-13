@@ -23,7 +23,14 @@ const profileReducer = (state, action) => {
         posts: action.data.posts,
       };
     }
-    case action.profile.DATA_FETCH_ERROR: {
+    case actions.profile.USER_DATA_EDITED: {
+      return {
+        ...state,
+        loading: false,
+        user: action.data,
+      };
+    }
+    case actions.profile.DATA_FETCH_ERROR: {
       return {
         ...state,
         loading: false,
