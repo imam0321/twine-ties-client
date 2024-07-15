@@ -3,8 +3,8 @@ import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import useProfile from "../../hooks/useProfile";
 import { actions } from "../../actions";
-import ProfileInfo from "./ProfileInfo";
-import MyPosts from "./MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPosts from "./ProfileInfo/MyPosts";
 
 const Profile = () => {
   const { state, dispatch } = useProfile();
@@ -38,8 +38,8 @@ const Profile = () => {
 
   return (
     <>
-      <ProfileInfo/>
-      <MyPosts/>
+      <ProfileInfo />
+      <MyPosts />
     </>
   );
 };

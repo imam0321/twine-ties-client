@@ -1,9 +1,9 @@
-import useProfile from "../../hooks/useProfile";
-import EditIcon from "../../assets/icons/edit.svg";
-import CheckIcon from "../../assets/icons/check.svg";
-import useAxios from "../../hooks/useAxios";
+import EditIcon from "../../../assets/icons/edit.svg";
+import CheckIcon from "../../../assets/icons/check.svg";
+import useProfile from "../../../hooks/useProfile";
+import useAxios from "../../../hooks/useAxios";
 import { useState } from "react";
-import { actions } from "../../actions";
+import { actions } from "../../../actions";
 
 const Bio = () => {
   const { state, dispatch } = useProfile();
