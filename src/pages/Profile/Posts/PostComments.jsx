@@ -1,12 +1,15 @@
-import Avatar from "../../../assets/images/avatars/avatar_1.png";
+import { useState } from "react";
+import useAvatar from "../../../hooks/useAvatar";
 
-const PostComments = () => {
+const PostComments = ({ post }) => {
+  const [showComment, setShowComment] = useState(false);
+  const { avatarURL } = useAvatar(post);
   return (
     <div>
       <div className="flex-center mb-3 gap-2 lg:gap-4">
         <img
           className="max-w-7 max-h-7 rounded-full lg:max-h-[34px] lg:max-w-[34px]"
-          src={Avatar}
+          src={avatarURL}
           alt="avatar"
         />
 
@@ -22,38 +25,45 @@ const PostComments = () => {
       </div>
 
       <div className="mt-4">
-        <button className="text-gray-300 max-md:text-sm">All Comment ▾</button>
+        <button
+          onClick={() => setShowComment(!showComment)}
+          className="text-gray-300 max-md:text-sm"
+        >
+          All Comment ▾
+        </button>
       </div>
 
-      <div className="space-y-4 divide-y divide-lighterDark pl-2 lg:pl-3">
-        <div className="flex items-center gap-3 pt-4">
-          <img
-            className="max-w-6 max-h-6 rounded-full"
-            src={Avatar}
-            alt="avatar"
-          />
-          <div>
-            <div className="flex gap-1 text-xs lg:text-sm">
-              <span>Tapas Adhikari: </span>
-              <span>Great Sumit Saha dada ❤</span>
+      {showComment && (
+        <div className="space-y-4 divide-y divide-lighterDark pl-2 lg:pl-3">
+          <div className="flex items-center gap-3 pt-4">
+            <img
+              className="max-w-6 max-h-6 rounded-full"
+              src={avatarURL}
+              alt="avatar"
+            />
+            <div>
+              <div className="flex gap-1 text-xs lg:text-sm">
+                <span>Tapas Adhikari: </span>
+                <span>Great Sumit Saha dada ❤</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 pt-4">
+            <img
+              className="max-w-6 max-h-6 rounded-full"
+              src={avatarURL}
+              alt="avatar"
+            />
+            <div>
+              <div className="flex gap-1 text-xs lg:text-sm">
+                <span>Sumit Saha: </span>
+                <span>Great Sumit Saha dada ❤</span>
+              </div>
             </div>
           </div>
         </div>
-
-        <div className="flex items-center gap-3 pt-4">
-          <img
-            className="max-w-6 max-h-6 rounded-full"
-            src={Avatar}
-            alt="avatar"
-          />
-          <div>
-            <div className="flex gap-1 text-xs lg:text-sm">
-              <span>Sumit Saha: </span>
-              <span>Great Sumit Saha dada ❤</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
