@@ -1,6 +1,5 @@
 import useProfile from "./useProfile";
 
-
 const useAvatar = (post) => {
   const { state } = useProfile();
   const isMe = post.author.id === state.user.avatar;

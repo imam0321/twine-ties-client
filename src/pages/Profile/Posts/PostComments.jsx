@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useAvatar from "../../../hooks/useAvatar";
+import PostCommentList from "./PostCommentList";
 
 const PostComments = ({ post }) => {
   const [showComment, setShowComment] = useState(false);
@@ -33,37 +34,7 @@ const PostComments = ({ post }) => {
         </button>
       </div>
 
-      {showComment && (
-        <div className="space-y-4 divide-y divide-lighterDark pl-2 lg:pl-3">
-          <div className="flex items-center gap-3 pt-4">
-            <img
-              className="max-w-6 max-h-6 rounded-full"
-              src={avatarURL}
-              alt="avatar"
-            />
-            <div>
-              <div className="flex gap-1 text-xs lg:text-sm">
-                <span>Tapas Adhikari: </span>
-                <span>Great Sumit Saha dada ❤</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 pt-4">
-            <img
-              className="max-w-6 max-h-6 rounded-full"
-              src={avatarURL}
-              alt="avatar"
-            />
-            <div>
-              <div className="flex gap-1 text-xs lg:text-sm">
-                <span>Sumit Saha: </span>
-                <span>Great Sumit Saha dada ❤</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {showComment && (<PostCommentList comments={post?.comments}/>)}
     </div>
   );
 };
